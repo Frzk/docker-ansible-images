@@ -9,6 +9,6 @@ RUN apt update \
   && apt upgrade \
   && apt install -y --no-install-recommends \
      python3 \
-     systemd \
+     systemd
 
 ENTRYPOINT ["/lib/systemd/systemd"]
