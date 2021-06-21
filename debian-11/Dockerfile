@@ -1,6 +1,6 @@
 # Build Debian 11 (Bullseye) image.
 
-FROM debian:11-slim
+FROM debian:bullseye-slim
 LABEL maintainer="François KUBLER"
 
 ARG DEBIAN_FRONTEND=noninteractive
