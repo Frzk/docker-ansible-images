@@ -7,7 +7,8 @@ RUN pacman -Sy --noconfirm \
     archlinux-keyring \
  && pacman -Syu --noconfirm \
  && pacman -Sy --noconfirm \
-    python
+    python \
+    sudo
 
 ENV ANSIBLE_USER="ansible"
 ENV SUDO_GROUP="sudoers"
