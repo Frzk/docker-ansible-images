@@ -11,7 +11,7 @@ RUN pacman -Sy --noconfirm \
     sudo
 
 ENV ANSIBLE_USER="ansible"
-ENV SUDO_GROUP="sudoers"
+ENV SUDO_GROUP="ansiblers"
 
 RUN set -xe \
   && groupadd "${ANSIBLE_USER}" \
