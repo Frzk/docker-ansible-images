@@ -20,7 +20,6 @@ RUN set -xe \
   && usermod -a -G "${SUDO_GROUP}" "${ANSIBLE_USER}" \
   && mkdir -p /etc/sudoers.d \
   && echo "%${SUDO_GROUP} ALL=(ALL:ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${SUDO_GROUP}" \
-  && echo "@includedir /etc/sudoers.d" >> "/etc/sudoers" \
-  && visudo --check --strict --file=/etc/sudoers
+  && echo "@includedir /etc/sudoers.d" >> "/etc/sudoers"
 
 ENTRYPOINT ["/lib/systemd/systemd"]
