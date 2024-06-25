@@ -11,16 +11,12 @@ RUN pacman -Sy --noconfirm \
     sudo
 
 ENV ANSIBLE_USER="ansible"
-ENV SUDO_GROUP="ansiblers"
 
 RUN set -xe \
   && groupadd "${ANSIBLE_USER}" \
-  && groupadd -r "${SUDO_GROUP}" \
   && useradd -m -g "${ANSIBLE_USER}" "${ANSIBLE_USER}" \
-  && echo "${ANSIBLE_USER} ALL=(ALL:ALL) NOPASSWD: ALL" >> "/etc/sudoers"
-#  && usermod -a -G "${SUDO_GROUP}" "${ANSIBLE_USER}" \
-#  && mkdir -p /etc/sudoers.d \
-#  && echo "%${SUDO_GROUP} ALL=(ALL:ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${SUDO_GROUP}" \
-#  && echo "@includedir /etc/sudoers.d" >> "/etc/sudoers"
+  && mkdir -p /etc/sudoers.d \
+  && echo "${ANSIBLE_USER} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${ANSIBLE_USER}" \
+  && echo "@includedir /etc/sudoers.d" >> "/etc/sudoers"
 
 ENTRYPOINT ["/lib/systemd/systemd"]
